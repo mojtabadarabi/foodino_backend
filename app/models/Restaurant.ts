@@ -33,7 +33,7 @@ const schema = new mongoose.Schema({
     type: String,
     required: false
   },
-  comment: [schemeComment],
+  comments: [schemeComment],
   menu: [schemeFood],
   adminUserName: {
     type: String,

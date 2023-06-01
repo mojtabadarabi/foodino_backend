@@ -1,14 +1,15 @@
-import { uploadMulter } from "../helpers/multer";
+import { uploadMulter } from "../../helpers/multer";
 
 const router = require('express').Router();
-const foodController = require('../controllers/food');
-const foodValidator = require('../validators/food');
-const validationMiddleware = require('../middlewares/validator');
-const authMiddleware = require('../middlewares/auth');
+const foodController = require('../../controllers/food/admin');
+const foodValidator = require('../../validators/food');
+const validationMiddleware = require('../../middlewares/validator');
+const authMiddleware = require('../../middlewares/auth');
 
 router.get('/',
     [authMiddleware.checkRefreshToken, authMiddleware.checkRestaurantAdmin],
     foodController.getAll)
+
 
 router.get('/:id',
     [authMiddleware.checkRefreshToken, authMiddleware.checkRestaurantAdmin, foodValidator.getSingle],

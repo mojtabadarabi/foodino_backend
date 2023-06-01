@@ -82,5 +82,5 @@ class Application {
     });
   }
 }
-
+export {}
 module.exports = Application;

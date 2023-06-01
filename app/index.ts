@@ -10,6 +10,7 @@ const app = express();
 require('dotenv').config()
 const routes = require('./routes');
 const bodyParser = require('body-parser')
+
 class Application {
   constructor() {
     this.setupExpressServer();
@@ -62,7 +63,7 @@ class Application {
 
   setupMongoose() {
     mongoose
-      .connect('mongodb://localhost:27017/food', {
+      .connect('mongodb://localhost:27017/foodino', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })
@@ -82,5 +83,5 @@ class Application {
     });
   }
 }
-
+export {}
 module.exports = Application;

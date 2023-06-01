@@ -1,10 +1,8 @@
-import { extractMulterImages } from "../helpers/multer";
-const mongoose = require('mongoose');
-const ObjectId = mongoose.Types.ObjectId;
-const RestaurantModel = require('../models/Restaurant');
+import { extractMulterImages } from "../../helpers/multer";
+const RestaurantModel = require('../../models/Restaurant');
 const _ = require('lodash');
-const helpers = require('../helpers/helpers');
-const foodsRepo = require('../../repositories/foodRepo');
+const helpers = require('../../helpers/helpers');
+const foodsRepo = require('../../../repositories/foodRepo');
 
 class FoodController {
     async create(req: any, res: any) {
@@ -17,10 +15,10 @@ class FoodController {
         helpers.sendResponse(res, restaurant, 201, 'food successful created')
     }
     async getSingle(req: any, res: any) {
-        const restaurant = await foodsRepo.findRestaurant({restaurantUserName:req.user.userName})
+        const restaurant = await foodsRepo.findRestaurant({ restaurantUserName: req.user.userName })
         if (!restaurant) return helpers.sendResponse(res, null, 404, 'restaurant not found')
-        restaurant.menu.map((food)=>console.log(typeof food._id))
-        const foundedFood = restaurant.menu.find((food)=>food._id==req.params.id)
+        restaurant.menu.map((food) => console.log(typeof food._id))
+        const foundedFood = restaurant.menu.find((food) => food._id == req.params.id)
         if (!foundedFood) return helpers.sendResponse(res, null, 404, 'food not found')
         helpers.sendResponse(res, foundedFood, 200, 'successfully')
     }
@@ -29,17 +27,6 @@ class FoodController {
         const restaurant = await RestaurantModel.findOne({ adminUserName: creator.userName })
         if (!restaurant) return helpers.sendResponse(res, null, 404, 'not found')
         helpers.sendResponse(res, { data: restaurant.menu, paginate: 10 }, 200, 'successfully')
-    }
-    async getAllFoods(req: any, res: any) {
-        const restaurant = await foodsRepo.findAllFoodsClient()
-        helpers.sendResponse(res, restaurant, 200, 'successfully')
-    }
-    async findSingleFoodClient(req: any, res: any) {
-        const restaurant = await foodsRepo.findRestaurant({restaurantId:req.params.id})
-        if (!restaurant) return helpers.sendResponse(res, null, 404, 'restaurant not found')
-        const foundedFood = restaurant.menu.find((food)=>food._id==req.body.foodId)
-        if (!foundedFood) return helpers.sendResponse(res, null, 404, 'food not found')
-        helpers.sendResponse(res, foundedFood, 200, 'successfully')
     }
     async delete(req: any, res: any) {
         const creator = req.user
@@ -80,4 +67,4 @@ class FoodController {
 }
 
 module.exports = new FoodController()
-export { }
+export { };

@@ -1,6 +1,7 @@
 const multer = require('multer');
 const path = require('path');
 const fileHandler = require('../helpers/fileHandler');
+const helpers = require('../helpers/helpers');
 
 const storage = multer.diskStorage({
     destination: function (req: any, file: any, cb: any) {
@@ -54,3 +55,8 @@ export const deleteFilesOnError = (files: any[]):void=> {
         fileHandler.removeFileByPath(file.path)
     })
 }
+export const seedUploads=(req:any,res:any)=>{
+    const images = extractMulterImages(req.files || [])
+    helpers.sendResponse(res, images, 201, 'upload successful')
+}
+export {}
