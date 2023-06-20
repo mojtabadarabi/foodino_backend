@@ -727,5 +727,5 @@ const data = [{
   ],
   "__v": 2
 }]
-
+export {}
 module.exports = data

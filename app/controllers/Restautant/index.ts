@@ -69,8 +69,6 @@ class RestautantController {
         if (!restaurant) return helpers.sendResponse(res, null, 404, 'restaurant with this admin not found')
         const checked = await helpers.checkPassword(password,restaurant.adminPassword)
         if (!checked) return helpers.sendResponse(res, null, 403, 'username or password is invalid')
-        console.log(checked)
-        console.log('checked')
         const token  = restaurant.generateAuthToken()
         return helpers.sendResponse(res, {
             restaurant: _.pick(restaurant, [

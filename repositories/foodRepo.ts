@@ -15,8 +15,6 @@ class FoodRepo extends BaseRepo {
         }).select('-adminPassword -adminUserName -comment`')
     }
     async findRestaurant({ restaurantId, restaurantUserName }) {
-        console.log(restaurantId)
-        console.log(restaurantUserName)
         let query = {}
         if (restaurantId) {
             query['_id'] = ObjectId(restaurantId)
