@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const foodController = require('../../controllers/food/client');
-const foodValidator = require('../../validators/food');
-const validationMiddleware = require('../../middlewares/validator');
+import foodController from '../../controllers/food/client';
+import foodValidator from '../../validators/food';
+import validationMiddleware from '../../middlewares/validator';
 
 router.get('/', foodController.getAll)
 
@@ -9,5 +9,5 @@ router.post('/:id', [foodValidator.clientGetSingle],
     validationMiddleware, foodController.getSingle)
 
 
-module.exports = router
+export default router
 export { };

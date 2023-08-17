@@ -15,6 +15,6 @@ class FoodController {
     }
 }
 
-module.exports = new FoodController()
+export default new FoodController()
 export { };
 

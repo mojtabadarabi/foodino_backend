@@ -45,7 +45,7 @@ class UserController {
         await tokenRepo.addToken({
             user_id:foundedUser._id,
             token:token.token,
-            expire_time:token.exp
+            expire_time:token.expire_time
         })
         return {
             isError: false, message: 'successful', data: {
@@ -55,6 +55,6 @@ class UserController {
     }
 }
 
-module.exports = new UserController()
+export default new UserController()
 export { };
 

@@ -1,7 +1,7 @@
 import { check } from "express-validator";
 const helpers = require('../helpers/helpers');
 
-module.exports = {
+export default {
     create: [
         check('username').exists().trim().notEmpty().withMessage('please enter username ').bail()
             .custom(async (value, { req }) => {

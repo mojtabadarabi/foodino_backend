@@ -3,7 +3,7 @@ import { validationResult } from "express-validator";
 import { deleteFilesOnError } from "../helpers/multer";
 const helpers = require('../helpers/helpers');
 
-module.exports = function (req: any, res: Response, next: NextFunction) {
+export default function (req: any, res: Response, next: NextFunction) {
     const errors = validationResult(req)
     if (errors.isEmpty()) {
         return next()

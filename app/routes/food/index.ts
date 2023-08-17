@@ -1,10 +1,10 @@
 
 const router = require('express').Router();
-const clientFoodRoutes = require('./client');
-const adminFoodRoutes = require('./admin');
+// import clientFoodRoutes from './client';
+// import adminFoodRoutes from './admin';
 
-router.use('/client', clientFoodRoutes)
-router.use('/admin', adminFoodRoutes)
+// router.use('/client', clientFoodRoutes)
+// router.use('/admin', adminFoodRoutes)
 
-module.exports = router
+export default router
 export { };

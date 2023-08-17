@@ -1,6 +1,6 @@
 import { check, param } from "express-validator";
 
-module.exports = {
+export default {
     getSingle: [
         param('id').notEmpty().withMessage('id is requires').bail().isMongoId().withMessage('id is not valid')
     ],

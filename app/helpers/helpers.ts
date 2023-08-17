@@ -25,7 +25,7 @@ class Helpers {
         today.setHours(today.getHours() + 8);
         return {
           token,
-          exp: today
+          expire_time: today
         };
     }
     // validate token
@@ -57,4 +57,4 @@ class Helpers {
         return new RegExp(mobileReg).test(value)
     }
 }
-module.exports = new Helpers()
+export default new Helpers()

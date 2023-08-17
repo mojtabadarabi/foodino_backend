@@ -6,8 +6,12 @@ class tokenRepo extends BaseRepo {
         super(TokenModel)
     }
 
-    async addToken(token) {
-        return await this.model(token).save()
+    async addToken({ user_id, token,expire_time }) {
+        const foundedUserId = await this.model.findOne({user_id})
+        if(foundedUserId){
+            return await this.model.update({user_id},{token,expire_time})
+        }
+        return await this.model({ user_id, token,expire_time }).save()
     }
 
 }

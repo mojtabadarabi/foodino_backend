@@ -31,7 +31,7 @@ export const uploadMulter = multer({
 })
 
 export const extractMulterImages = (files: any[]): ImageType[] => {
-    let images = []
+    let images:any = []
     files.map((file: any) => {
         images.push({
             name: file.filename,

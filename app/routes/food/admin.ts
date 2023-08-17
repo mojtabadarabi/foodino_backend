@@ -1,10 +1,10 @@
 import { uploadMulter } from "../../helpers/multer";
 
 const router = require('express').Router();
-const foodController = require('../../controllers/food/admin');
-const foodValidator = require('../../validators/food');
-const validationMiddleware = require('../../middlewares/validator');
-const authMiddleware = require('../../middlewares/auth');
+import foodController from '../../controllers/food/admin';
+import foodValidator from '../../validators/food';
+import validationMiddleware from '../../middlewares/validator';
+import authMiddleware from '../../middlewares/auth';
 
 router.get('/',
     [authMiddleware.checkRefreshToken, authMiddleware.checkRestaurantAdmin],
@@ -33,5 +33,5 @@ router.put('/:id',
     foodController.update
 )
 
-module.exports = router
+export default router
 export { }

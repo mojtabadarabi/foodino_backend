@@ -83,4 +83,4 @@ class RestautantController {
     }
 }
 
-module.exports = new RestautantController();
+export default new RestautantController();

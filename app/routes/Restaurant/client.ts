@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const RestautantController = require('../../controllers/Restautant');
-const restaurantValidator = require('../../validators/restaurant');
-const validationMiddleware = require('../../middlewares/validator');
+import RestautantController from '@/controllers/Restautant';
+import restaurantValidator from '@/validators/restaurant';
+import validationMiddleware from '@/middlewares/validator';
 
 router.get('/', RestautantController.getAll)
 router.get('/:id', [restaurantValidator.getSingle],
@@ -13,5 +13,5 @@ router.put('/:id', [restaurantValidator.update],
 router.delete('/:id', [restaurantValidator.delete],
     validationMiddleware, RestautantController.delete)
 
-module.exports = router
+export default router
 export { }
