@@ -31,11 +31,11 @@ export const uploadMulter = multer({
 })
 
 export const extractMulterImages = (files: any[]): ImageType[] => {
-    let images:any = []
+    let images: any = []
     files.map((file: any) => {
         images.push({
             name: file.filename,
-            src: file.path,
+            src: process.env.DOMAIN + '/' + file.path.replace(/\\/g, "/"),
             size: file.size,
             type: file.mimetype,
         })
@@ -50,13 +50,13 @@ export interface ImageType {
     type: string,
 }
 
-export const deleteFilesOnError = (files: any[]):void=> {
-    files.map((file:any)=>{
+export const deleteFilesOnError = (files: any[]): void => {
+    files.map((file: any) => {
         fileHandler.removeFileByPath(file.path)
     })
 }
-export const seedUploads=(req:any,res:any)=>{
+export const seedUploads = (req: any, res: any) => {
     const images = extractMulterImages(req.files || [])
     helpers.sendResponse(res, images, 201, 'upload successful')
 }
-export {}
+export { };

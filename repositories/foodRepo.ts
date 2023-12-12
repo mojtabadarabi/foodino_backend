@@ -1,18 +1,15 @@
-const RestaurantModel = require('../app/models/Restaurant');
-const BaseRepo = require('./baseRepo');
-const mongoose = require('mongoose');
+import FoodModel from '../app/models/Food';
+import BaseRepo from './baseRepo';
+import mongoose from 'mongoose';
 const ObjectId = mongoose.Types.ObjectId;
 
 class FoodRepo extends BaseRepo {
     constructor() {
-        super(RestaurantModel)
+        super(FoodModel)
     }
-    async findAllFoodsClient() {
-        return await this.find({
-            // query:{
-            //     "menu.name":"چلو کباب"
-            // }
-        }).select('-adminPassword -adminUserName -comment`')
+    async getAllFoods() {
+        //@ts-ignore
+        return await this.find({})
     }
     async findRestaurant({ restaurantId, restaurantUserName }) {
         let query = {}
@@ -29,4 +26,4 @@ class FoodRepo extends BaseRepo {
 }
 
 export { }
-module.exports = new FoodRepo();
+export default new FoodRepo();

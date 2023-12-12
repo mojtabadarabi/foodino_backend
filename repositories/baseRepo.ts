@@ -33,8 +33,9 @@ class BaseRepo {
         fields = {},
         otherOptions = {}
     }: any) {
+        console.log(query)
         return this.model.findOne(query,fields,otherOptions)
     }
 } 
 export {}
-module.exports = BaseRepo;
+export default BaseRepo;

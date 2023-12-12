@@ -1,11 +1,8 @@
-const mongoose = require('mongoose');
-const ObjectId = mongoose.Types.ObjectId;
-const TokenModel = require('../models/Token');
-const _ = require('lodash');
-const helpers = require('../helpers/helpers');
-const userRepo = require('../../repositories/userRepo');
-const tokenRepo = require('../../repositories/tokenRepo');
-const UserModel = require('../models/User');
+import RoleRepo from '@root/repositories/RoleRepo';
+import tokenRepo from '../../repositories/tokenRepo';
+import userRepo from '../../repositories/userRepo';
+import helpers from '../helpers/helpers';
+import UserModel from '../models/User';
 
 class UserController {
     async sign(req, res) {
@@ -31,25 +28,32 @@ class UserController {
 
     async create(user) {
         const hashedPassword = helpers.hashPassword(user.password)
-        await userRepo.create({ ...user, password: hashedPassword })
+        await userRepo.create({ ...user, password: hashedPassword,role:'USER' })
     }
     async login({ email, phone_number, password }) {
         const foundedUser = await userRepo.findOneByKey({ email, phone_number })
         const checked = await helpers.checkPassword(password, foundedUser.password)
         if (!checked) return { isError: true, message: 'password is incorrect', data: null }
+        const foundedRole = await RoleRepo.findOne({query:{name:foundedUser.role}})
+
         const token = await helpers.generateToken({
             _id: foundedUser._id,
             email: foundedUser.email,
             phone_number: foundedUser.phone_number,
+            role:foundedUser.role,
+            permissions:foundedRole.permissions
         })
+
         await tokenRepo.addToken({
-            user_id:foundedUser._id,
-            token:token.token,
-            expire_time:token.expire_time
+            user_id: foundedUser._id,
+            token: token.token,
+            expire_time: token.expire_time,
+            role:foundedUser.role,
+            permissions:foundedRole.permissions
         })
         return {
             isError: false, message: 'successful', data: {
-                user: foundedUser, token
+                user: foundedUser,permissions:foundedRole.permissions, token
             }
         }
     }

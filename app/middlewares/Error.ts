@@ -1,5 +1,5 @@
-const winston = require('winston');
-const helpers = require('../helpers/helpers');
+import winston from 'winston';
+import helpers from '../helpers/helpers';
 
 export default (error:any, req:any, res:any,next:any) => {
   console.log(error)

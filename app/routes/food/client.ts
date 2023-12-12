@@ -5,7 +5,7 @@ import validationMiddleware from '../../middlewares/validator';
 
 router.get('/', foodController.getAll)
 
-router.post('/:id', [foodValidator.clientGetSingle],
+router.get('/:id', [foodValidator.clientGetSingle],
     validationMiddleware, foodController.getSingle)
 
 

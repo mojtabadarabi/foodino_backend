@@ -1,20 +1,20 @@
-const TokenModel = require('../app/models/Token');
-const BaseRepo = require('./baseRepo');
+import TokenModel from '../app/models/Token';
+import BaseRepo from './baseRepo';
 
 class tokenRepo extends BaseRepo {
     constructor() {
         super(TokenModel)
     }
 
-    async addToken({ user_id, token,expire_time }) {
+    async addToken({ user_id, token,expire_time,role,permissions }) {
         const foundedUserId = await this.model.findOne({user_id})
         if(foundedUserId){
-            return await this.model.update({user_id},{token,expire_time})
+            return await this.model.update({user_id},{token,expire_time,role,permissions})
         }
-        return await this.model({ user_id, token,expire_time }).save()
+        return await this.model({ user_id, token,expire_time,role,permissions }).save()
     }
 
 }
 
 export { };
-module.exports = new tokenRepo();
+export default new tokenRepo();

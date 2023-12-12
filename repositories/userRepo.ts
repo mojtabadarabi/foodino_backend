@@ -1,9 +1,5 @@
-const User = require('../app/models/User');
-const BaseRepo = require('./baseRepo');
-const mongoose = require('mongoose');
-const ObjectId = mongoose.Types.ObjectId;
-
-
+import User from '../app/models/User';
+import BaseRepo from './baseRepo';
 
 class UserRepo extends BaseRepo {
     constructor() {
@@ -23,4 +19,4 @@ class UserRepo extends BaseRepo {
 }
 
 export { }
-module.exports = new UserRepo();
+export default new UserRepo();

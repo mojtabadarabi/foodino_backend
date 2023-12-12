@@ -1,10 +1,12 @@
-const RestaurantModel = require('../../models/Restaurant');
-const _ = require('lodash');
-const helpers = require('../../helpers/helpers');
+import RestaurantModel from '../../models/Restaurant';
+import _ from 'lodash';
+import helpers from '../../helpers/helpers';
+import restaurantRepo from '@root/repositories/restaurantRepo';
 
 class RestautantController {
     async getAll(req: any, res: any) {
-        const data = await RestaurantModel.find().select('name description score address images menu adminUserName').limit(20)
+                //@ts-ignore
+        const data = await restaurantRepo.find({})
         res.status(200).json({ message: 'success', data: { data: data, paginate: 10 } })
     }
     async getSingle(req: any, res: any) {
@@ -28,6 +30,7 @@ class RestautantController {
             'adminUserName',
             'adminPassword'
         ]))
+        //@ts-ignore
         restaurant.adminPassword = helpers.hashPassword(req.body.adminPassword)
         const savedData = await restaurant.save()
         return helpers.sendResponse(res, _.pick(savedData, [

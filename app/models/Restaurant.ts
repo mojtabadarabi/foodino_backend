@@ -1,19 +1,5 @@
-const mongoose = require('mongoose');
-const Helpers = require('../helpers/helpers');
-
-const schemeComment = new mongoose.Schema({
-  user: { type: String, required: true },
-  text: { type: String, required: true },
-  score: { type: Number, required: false, default: 0 },
-});
-const schemeFood = new mongoose.Schema({
-  name: { type: String, required: true },
-  description: { type: String, required: true },
-  score: { type: Number, required: false, default: 0 },
-  price: { type: Number, required: true },
-  images: { type: Array, required: false, default: [] },
-  comments: [schemeComment],
-});
+import mongoose from 'mongoose';
+import Helpers from '../helpers/helpers';
 
 const schema = new mongoose.Schema({
   name: {
@@ -33,8 +19,10 @@ const schema = new mongoose.Schema({
     type: String,
     required: false
   },
-  comments: [schemeComment],
-  menu: [schemeFood],
+  comments: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Comments'
+  }],
   adminUserName: {
     type: String,
     required: true
@@ -47,6 +35,7 @@ const schema = new mongoose.Schema({
 schema.methods.generateAuthToken = function () {
   const data = {
     _id: this._id,
+    //@ts-ignore
     userName: this.adminUserName,
     role: 'restaurant',
   };
@@ -60,5 +49,6 @@ schema.methods.generateAuthToken = function () {
 };
 const model = mongoose.model('restaurant', schema);
 
-module.exports = model;
-export { }
+export default model;
+export { };
+

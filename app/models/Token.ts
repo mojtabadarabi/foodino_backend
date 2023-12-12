@@ -16,4 +16,4 @@ const TokenSchema = new Schema({
     }
 },{timestamps: true})
 
-module.exports = mongoose.model('token',TokenSchema)
+export default mongoose.model('token',TokenSchema)

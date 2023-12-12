@@ -1,5 +1,5 @@
 import { check } from "express-validator";
-const helpers = require('../helpers/helpers');
+import helpers from '../helpers/helpers';
 
 export default {
     create: [

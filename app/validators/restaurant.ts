@@ -1,5 +1,5 @@
 import { check, param } from "express-validator";
-const RestaurantModel = require('../models/Restaurant');
+import RestaurantModel from '../models/Restaurant'
 
 export default {
     getSingle: [
@@ -9,7 +9,7 @@ export default {
         check('name').exists().withMessage('please enter name ').bail()
             .isLength({ min: 3 }).withMessage('please enter name at least 3 char ').bail()
             .custom(async (value, { req }) => {
-                const foundedRestaurant = await RestaurantModel.findOne({ name: value })
+                const foundedRestaurant = await RestaurantModel?.findOne({ name: value })
                 if (foundedRestaurant) throw new Error('name already exist !!!');
                 return true
             }),

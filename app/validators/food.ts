@@ -21,6 +21,6 @@ export default {
     ],
     clientGetSingle: [
         param('id').notEmpty().withMessage('id is requires').bail().isMongoId().withMessage('id is not valid'),
-        check('foodId').notEmpty().withMessage('food id is requires').bail().isMongoId().withMessage('food id is not valid'),
+        // check('foodId').notEmpty().withMessage('food id is requires').bail().isMongoId().withMessage('food id is not valid'),
     ],
 }

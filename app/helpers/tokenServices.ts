@@ -3,5 +3,4 @@ class TokenServices{
         return authToken.split(' ')[1]
     }
 }
-
-module.exports = new TokenServices()
+export default new TokenServices()
