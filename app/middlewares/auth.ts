@@ -1,6 +1,8 @@
 import helpers from '../helpers/helpers'
 import tokenServices from '../helpers/tokenServices'
 
+const { restaurantManagement } = require('@root/config/permissions')
+
 class Auth {
     checkRefreshToken(req: any, res: any, next: any) {
         console.log(req.headers)
@@ -31,6 +33,14 @@ class Auth {
             return next()
         }
         return helpers.sendResponse(res, null, 403, 'this user dont access ')
+    }
+    getPermissionbyApprovalType(type){
+        switch (type) {
+            case 'restaurants':
+                return restaurantManagement
+            default:
+                return 
+        }
     }
 }
 

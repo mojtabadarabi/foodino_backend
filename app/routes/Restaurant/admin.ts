@@ -1,10 +1,52 @@
 const router = require('express').Router();
 import RestautantController from '@/controllers/Restautant';
-import restaurantValidator from '@/validators/restaurant';
 import validationMiddleware from '@/middlewares/validator';
+import restaurantValidator from '@/validators/restaurant';
+import authMiddleware from '../../middlewares/auth';
+
+const { restaurantManagement } = require('../../../config/permissions')
 
 router.post('/login', [restaurantValidator.login],
     validationMiddleware, RestautantController.login)
 
+router.get('/:id',
+    [
+        restaurantValidator.getSingle
+    ],
+    validationMiddleware,
+    RestautantController.getSingle
+)
+
+router.post('/',
+    [
+        authMiddleware.checkRefreshToken, (req, res, next) => authMiddleware.
+            checkUserPermissions(req, res, next, [restaurantManagement]),
+        restaurantValidator.create
+    ],
+    validationMiddleware
+    , RestautantController.create
+)
+router.put('/:id',
+    [
+        authMiddleware.checkRefreshToken, (req, res, next) => authMiddleware.
+            checkUserPermissions(req, res, next, [restaurantManagement]),
+        restaurantValidator.update
+    ],
+    validationMiddleware,
+    RestautantController.update
+)
+
+router.delete('/:id',
+    [
+        authMiddleware.checkRefreshToken, (req, res, next) => authMiddleware.
+            checkUserPermissions(req, res, next, [restaurantManagement]),
+        restaurantValidator.delete
+    ],
+    validationMiddleware,
+    RestautantController.delete
+)
+
+
 export default router
-export { }
+export { };
+

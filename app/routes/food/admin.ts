@@ -5,31 +5,26 @@ import validationMiddleware from '../../middlewares/validator';
 import foodValidator from '../../validators/food';
 
 const router = require('express').Router();
-const { createFood, editFood, deleteFood } = require('../../../config/permissions')
+const { foodManagement } = require('../../../config/permissions')
 
 router.get('/',
     [authMiddleware.checkRefreshToken, authMiddleware.checkRestaurantAdmin],
     foodController.getAll)
 
-
-// router.get('/:id',
-//     [authMiddleware.checkRefreshToken, authMiddleware.checkRestaurantAdmin, foodValidator.getSingle],
-//     foodController.getSingle)
-
 router.post('/',
     uploadMulter.array('images'),
-    [authMiddleware.checkRefreshToken, (req, res, next) => authMiddleware.checkUserPermissions(req, res, next, [createFood]), foodValidator.create],
+    [authMiddleware.checkRefreshToken, (req, res, next) => authMiddleware.checkUserPermissions(req, res, next, [foodManagement]), foodValidator.create],
     validationMiddleware,
     foodController.create
 )
 
 router.delete('/:id',
-    [foodValidator.delete, authMiddleware.checkRefreshToken, (req, res, next) => authMiddleware.checkUserPermissions(req, res, next, [deleteFood])],
+    [foodValidator.delete, authMiddleware.checkRefreshToken, (req, res, next) => authMiddleware.checkUserPermissions(req, res, next, [foodManagement])],
     validationMiddleware,
     foodController.delete
 )
 router.put('/:id',
-    [foodValidator.update, authMiddleware.checkRefreshToken, (req, res, next) => authMiddleware.checkUserPermissions(req, res, next, [editFood])],
+    [foodValidator.update, authMiddleware.checkRefreshToken, (req, res, next) => authMiddleware.checkUserPermissions(req, res, next, [foodManagement])],
     validationMiddleware,
     foodController.update
 )

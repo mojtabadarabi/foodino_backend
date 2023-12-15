@@ -6,7 +6,7 @@ import restaurantRepo from '@root/repositories/restaurantRepo';
 class RestautantController {
     async getAll(req: any, res: any) {
                 //@ts-ignore
-        const data = await restaurantRepo.find({})
+        const data = await restaurantRepo.find({query:{isApproval:true}})
         res.status(200).json({ message: 'success', data: { data: data, paginate: 10 } })
     }
     async getSingle(req: any, res: any) {

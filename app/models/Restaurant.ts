@@ -31,6 +31,11 @@ const schema = new mongoose.Schema({
     type: String,
     required: true
   },
+  isApproval: {
+    type: Boolean,
+    required: false,
+    default: null
+  }
 });
 schema.methods.generateAuthToken = function () {
   const data = {

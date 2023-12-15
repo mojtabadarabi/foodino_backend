@@ -1,49 +1,37 @@
 
-const { createFood,
-    editFood,
-    deleteFood,
-    deleteUser,
-    restaurantApprove,
-    createRestaurant,
-    editRestaurant,
-    deleteRestaurant,
-    commentApprove,
-    ownCommentApprove } = require('../config/permissions.ts')
+const { foodManagement,
+    userManagement,
+    restaurantManagement,
+    accessManagement,
+    commentManagement } = require('../config/permissions.ts')
 
 const data = [
     {
         name: 'SUPER_ADMIN',
         description: 'website owner',
         permissions: [
-            createFood,
-            editFood,
-            deleteFood,
-            deleteUser,
-            restaurantApprove,
-            createRestaurant,
-            editRestaurant,
-            deleteRestaurant,
-            commentApprove
+            foodManagement,
+            userManagement,
+            restaurantManagement,
+            accessManagement,
+            commentManagement
         ]
     },
     {
-        name: 'ADMIN_OPERATOR',
-        description: 'operate site',
+        name: 'ADMIN',
+        description: 'website admin',
         permissions: [
-            restaurantApprove, 
-            createRestaurant,
-            editRestaurant,
-            deleteRestaurant,
+            foodManagement,
+            userManagement,
+            restaurantManagement,
+            commentManagement
         ]
     },
     {
         name: 'RESTAURANT_ADMIN',
         description: 'restaurant admin',
         permissions: [
-            createFood,
-            editFood,
-            deleteFood,
-            ownCommentApprove
+            foodManagement
         ]
     },
     {
