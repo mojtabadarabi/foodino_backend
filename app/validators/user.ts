@@ -1,4 +1,4 @@
-import { check } from "express-validator";
+import { check ,header, param} from "express-validator";
 import helpers from '../helpers/helpers';
 
 export default {
@@ -27,4 +27,11 @@ export default {
             }),
         check('password').exists().trim().notEmpty().withMessage('enter password').bail()
     ],
+    get:[
+        header('authorization').exists().trim().notEmpty().withMessage('enter authorization token')
+    ],
+    access:[
+        param('id').notEmpty().withMessage('id is requires').bail().isMongoId().withMessage('id is not valid'),
+        check('role').notEmpty().withMessage('enter user role')
+    ]
 }

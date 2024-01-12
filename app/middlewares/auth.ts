@@ -1,15 +1,16 @@
+import TokenRepo from '../../repositories/tokenRepo'
 import helpers from '../helpers/helpers'
 import tokenServices from '../helpers/tokenServices'
 
 const { restaurantManagement } = require('@root/config/permissions')
 
 class Auth {
-    checkRefreshToken(req: any, res: any, next: any) {
-        console.log(req.headers)
+    async checkRefreshToken(req: any, res: any, next: any) {
         const authToken = req.headers?.['authorization']
-        console.log(authToken)
         if (!authToken) return helpers.sendResponse(res, null, 403, 'auth token required ')
         const refreshToken = tokenServices.extractToken(authToken)
+        const foundedToken = await TokenRepo.getToken({ token: refreshToken })
+        if (!foundedToken) return helpers.sendResponse(res, null, 403, 'auth token not exist or expired ')
         const { payload, isPass } = helpers.checkToken(refreshToken)
         if (!isPass) return helpers.sendResponse(res, null, 403, payload)
         req.user = payload
@@ -34,12 +35,12 @@ class Auth {
         }
         return helpers.sendResponse(res, null, 403, 'this user dont access ')
     }
-    getPermissionbyApprovalType(type){
+    getPermissionbyApprovalType(type) {
         switch (type) {
             case 'restaurants':
                 return restaurantManagement
             default:
-                return 
+                return
         }
     }
 }

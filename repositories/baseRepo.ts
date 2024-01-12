@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
 interface GetAllProps {
-    query: any,
-    fields: any,
-    sort: Record<any, any>,
-    page: number,
-    paginate: number,
-    otherOptions: any
+    query?: any,
+    fields?: any,
+    sort?: Record<any, any>,
+    page?: number,
+    paginate?: number,
+    otherOptions?: any
 }
 
 class BaseRepo {
@@ -35,6 +35,15 @@ class BaseRepo {
     }: any) {
         console.log(query)
         return this.model.findOne(query,fields,otherOptions)
+    }
+
+    findByIdAndUpdate({
+        id,
+        updatedField
+    }){
+        return this.model.findByIdAndUpdate(id, {
+            $set: updatedField
+        }, { new: true })
     }
 } 
 export {}
