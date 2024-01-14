@@ -36,7 +36,7 @@ const schema = new mongoose.Schema({
     required: false,
     default: null
   }
-});
+},{timestamps: true});
 schema.methods.generateAuthToken = function () {
   const data = {
     _id: this._id,

@@ -42,7 +42,7 @@ class UserController {
             email: foundedUser.email,
             phone_number: foundedUser.phone_number,
             role: foundedUser.role,
-            permissions: foundedRole.permissions
+            permissions: foundedRole?.permissions||[]
         })
 
         await tokenRepo.addToken({
@@ -84,8 +84,8 @@ class UserController {
     async getUsers(req, res) {
         const users = await userRepo.find({
             page: 1,
-            query: {}
-        })
+            query: {role:{$ne:"SUPER_ADMIN"}}
+        }).select('-password -__v')
         helpers.sendResponse(res, {
             data: users,
             page: 1

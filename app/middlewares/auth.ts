@@ -22,6 +22,28 @@ class Auth {
         }
         return helpers.sendResponse(res, null, 403, 'this user dont access ')
     }
+    async addUserToReq(req: any, res: any, next: any) {
+        const authToken = req.headers?.['authorization']
+        if (authToken) {
+            const refreshToken = tokenServices.extractToken(authToken)
+            if (!refreshToken) {
+                req.user = null
+            }
+            else {
+                const { payload, isPass } = helpers.checkToken(refreshToken)
+                if (isPass) {
+                    req.user = payload
+                }
+                else {
+                    req.user = null
+                }
+            }
+        }
+        else {
+            req.user = null
+        }
+        next()
+    }
     checkUserPermissions(req: any, res: any, next: any, neededPermissions) {
         const userPermissions = req.user.permissions
         let isHavePermission = true

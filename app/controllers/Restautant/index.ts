@@ -5,8 +5,15 @@ import restaurantRepo from '@root/repositories/restaurantRepo';
 
 class RestautantController {
     async getAll(req: any, res: any) {
+        console.log(req.user)
+        console.log('req.user')
+        const isAdmin = req.user?.permissions&&req.user?.permissions?.length!==0&&req?.user?.permissions.includes('RESTAURANT_MANAGEMENT')
+        let query:any={}
+        if(!isAdmin){
+            query.isApproval = true
+        }
                 //@ts-ignore
-        const data = await restaurantRepo.find({query:{isApproval:true}})
+        const data = await restaurantRepo.find({query})
         res.status(200).json({ message: 'success', data: { data: data, paginate: 10 } })
     }
     async getSingle(req: any, res: any) {

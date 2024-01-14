@@ -369,3 +369,44 @@
 {"level":"info","message":"db connected"}
 {"level":"info","message":"db connected"}
 {"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"error","message":"$not needs a regex or a document"}
+{"level":"error","message":"$not needs a regex or a document"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"error","message":"Cannot read properties of null (reading 'permissions')"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"error","message":"Cannot read properties of null (reading 'permissions')"}
+{"level":"error","message":"Cannot read properties of null (reading 'permissions')"}
+{"level":"info","message":"db connected"}
+{"level":"error","message":"Cannot set properties of undefined (setting 'isApproval')"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}

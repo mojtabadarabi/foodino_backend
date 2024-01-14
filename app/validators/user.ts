@@ -32,6 +32,8 @@ export default {
     ],
     access:[
         param('id').notEmpty().withMessage('id is requires').bail().isMongoId().withMessage('id is not valid'),
-        check('role').notEmpty().withMessage('enter user role')
+        check('role').notEmpty().withMessage('enter user role').bail()
+        .not().equals('SUPER_ADMIN').withMessage('cant set to super admin').bail()
+        .isIn(['ADMIN','USER','RESTAURANT_ADMIN']).withMessage('enter valid role')
     ]
 }

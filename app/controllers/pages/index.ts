@@ -6,7 +6,7 @@ class PagesControllers {
     async mainPage(req: any, res: any) {
         const foods = await foodRepo.getAllFoods()
         //@ts-ignore
-        const restaurants = await restaurantRepo.find({})
+        const restaurants = await restaurantRepo.find({query:{isApproval:true}})
 
         helpers.sendResponse(res, { foods, restaurants }, 200, 'successfully')
     }

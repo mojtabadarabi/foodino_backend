@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { foodManagement } = require('../../../config/permissions')
 const { MongoClient, ObjectID } = require('mongodb');
+import helpers from '@/helpers/helpers'
 
 export default async function approval(req, res) {
     const client = new MongoClient(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -13,7 +14,7 @@ export default async function approval(req, res) {
         
         const collections = await db.listCollections({ name: collectionName }).toArray();
         if (collections.length === 0) {
-            return res.status(404).json({ message: 'collection not found', data: null})
+            helpers.sendResponse(res, null, 404, 'icollection not found')
         }
 
         const collection = db.collection(collectionName);
@@ -23,9 +24,9 @@ export default async function approval(req, res) {
 
         try {
             await collection.updateMany(filter, { $set: { isApproval } })
-            res.status(200).json({ message: 'item updated successfully', data: isApproval })
+            helpers.sendResponse(res, isApproval, 200, 'successfull')
         } catch (error) {
-            res.status(200).json({ message: 'item not found, data: null' })
+            helpers.sendResponse(res, null, 400, 'item not found, data: null')
         }
 
     } catch (err) {
