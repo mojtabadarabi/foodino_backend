@@ -4,6 +4,7 @@ const permissions =  {
     restaurantManagement:"RESTAURANT_MANAGEMENT",
     accessManagement:"ACCESS_MANAGEMENT",
     commentManagement:"COMMENT_MANAGEMENT",
+    ownManagement:"OWN_MANAGEMENT"
 }
 
 module.exports = permissions

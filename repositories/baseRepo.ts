@@ -21,7 +21,7 @@ class BaseRepo {
         fields = {},
         sort = { _id: '1' },
         page = 1,
-        paginate = 10,
+        paginate = 20,
         otherOptions = {}
     }: GetAllProps) {
         return this.model.find(query, fields, otherOptions).skip((page - 1) * paginate)

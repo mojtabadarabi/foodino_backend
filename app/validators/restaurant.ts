@@ -1,5 +1,6 @@
 import { check, param } from "express-validator";
 import RestaurantModel from '../models/Restaurant'
+const { MongoClient, ObjectID } = require('mongodb');
 
 export default {
     getSingle: [
@@ -18,17 +19,6 @@ export default {
         ,
         check('address').exists().withMessage('enter address').bail()
             .isLength({ min: 3 }).withMessage('please enter address at least 3 char ').bail()
-        ,
-        check('adminUserName').exists().withMessage('enter user name').bail()
-            .isLength({ min: 3 }).withMessage('please enter username at least 3 char ').bail()
-            .custom(async (value, { req }) => {
-                const foundedRestaurant = await RestaurantModel.findOne({ adminUserName: value })
-                if (foundedRestaurant) throw new Error('this userName is not available !!!');
-                return true
-            })
-        ,
-        check('adminPassword').exists().withMessage('enter password').bail()
-            .isLength({ min: 3 }).withMessage('please enter password at least 3 char ').bail()
         ,
     ],
     update: [
@@ -53,5 +43,17 @@ export default {
         check('password').exists().withMessage('enter password').bail()
             .isLength({ min: 3 }).withMessage('please enter password at least 3 char ').bail()
         ,
+    ],
+    approval: [
+        check('ids').exists().withMessage('please enter ids ').bail()
+            .isArray().withMessage('enter ids as array').bail().notEmpty().withMessage('enter at least one id !'),
+        check('ids.*').custom(value => {
+            if (!ObjectID.isValid(value)) {
+                throw new Error('Invalid ObjectID');
+            }
+            return true;
+        }),
+        check('isApproval').exists().withMessage('enter isApproval').bail()
+            .isBoolean().withMessage('enter isApproval boolean').bail()
     ],
 }

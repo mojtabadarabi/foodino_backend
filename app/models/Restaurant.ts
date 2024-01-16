@@ -19,24 +19,22 @@ const schema = new mongoose.Schema({
     type: String,
     required: false
   },
+  restaurantOwner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+    default: null,
+    required:true
+  },
   comments: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Comments'
   }],
-  adminUserName: {
-    type: String,
-    required: true
-  },
-  adminPassword: {
-    type: String,
-    required: true
-  },
   isApproval: {
     type: Boolean,
     required: false,
     default: null
   }
-},{timestamps: true});
+}, { timestamps: true });
 schema.methods.generateAuthToken = function () {
   const data = {
     _id: this._id,

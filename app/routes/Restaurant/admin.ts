@@ -19,13 +19,23 @@ router.get('/:id',
 
 router.post('/',
     [
-        authMiddleware.checkRefreshToken, (req, res, next) => authMiddleware.
-            checkUserPermissions(req, res, next, [restaurantManagement]),
+        authMiddleware.checkRefreshToken,
         restaurantValidator.create
     ],
     validationMiddleware
     , RestautantController.create
 )
+
+router.put('/approval',
+    [
+        authMiddleware.checkRefreshToken, (req, res, next) => authMiddleware.
+            checkUserPermissions(req, res, next, [restaurantManagement]),
+        restaurantValidator.approval
+    ],
+    validationMiddleware,
+    RestautantController.approval
+)
+
 router.put('/:id',
     [
         authMiddleware.checkRefreshToken, (req, res, next) => authMiddleware.
@@ -35,6 +45,8 @@ router.put('/:id',
     validationMiddleware,
     RestautantController.update
 )
+
+
 
 router.delete('/:id',
     [

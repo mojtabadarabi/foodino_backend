@@ -7,6 +7,13 @@ class RestaurantRepo extends BaseRepo {
     constructor() {
         super(RestaurantModel)
     }
+    async addRestaurant(restaurant) {
+        const requestedRestaurant = new this.model(restaurant)
+        return requestedRestaurant.save()
+    }
+    async approveRestaurant(query,isApproval){
+        return this.model.updateMany(query, { $set: { isApproval } })
+    }
 }
 
 export { };

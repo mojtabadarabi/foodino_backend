@@ -3,7 +3,8 @@ const { foodManagement,
     userManagement,
     restaurantManagement,
     accessManagement,
-    commentManagement } = require('../config/permissions.ts')
+    commentManagement,
+    ownManagement } = require('../config/permissions.ts')
 
 const data = [
     {
@@ -25,6 +26,14 @@ const data = [
             userManagement,
             restaurantManagement,
             commentManagement
+        ]
+    },
+    {
+        name: 'RESTAURANT_OWNER',
+        description: 'restaurant owner',
+        permissions: [
+            foodManagement,
+            ownManagement
         ]
     },
     {
