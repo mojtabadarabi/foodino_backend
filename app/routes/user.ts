@@ -32,6 +32,22 @@ router.get('/users', [
     , UserController.getUsers.bind(UserController)
 )
 
+router.post('/search-users', [
+    userValidation.searchUser,
+    authMiddleware.checkRefreshToken,
+],
+    validationMiddleware
+    , UserController.searchUser.bind(UserController)
+)
+
+router.post('/add-admins', [
+    userValidation.addAdmins,
+    authMiddleware.checkRefreshToken,
+],
+    validationMiddleware
+    , UserController.addAdmins.bind(UserController)
+)
+
 export default router
 export { };
 

@@ -1,4 +1,5 @@
 import RoleRepo from '@root/repositories/RoleRepo';
+import restaurantRepo from '@root/repositories/restaurantRepo';
 import _ from 'lodash';
 import tokenRepo from '../../repositories/tokenRepo';
 import userRepo from '../../repositories/userRepo';
@@ -42,7 +43,7 @@ class UserController {
             email: foundedUser.email,
             phone_number: foundedUser.phone_number,
             role: foundedUser.role,
-            permissions: foundedRole?.permissions||[]
+            permissions: foundedRole?.permissions || []
         })
 
         await tokenRepo.addToken({
@@ -54,12 +55,16 @@ class UserController {
         })
         return {
             isError: false, message: 'successful', data: {
-                user: foundedUser, permissions: foundedRole.permissions, token
+                user: _.pick(foundedUser, [
+                    'email', 'name', 'phone_number', 'permissions', 'role', 'username', '_id'
+                ]), permissions: foundedRole.permissions, token
             }
         }
     }
     getUser(req, res) {
-        helpers.sendResponse(res, req.user, 200, 'successfull')
+        helpers.sendResponse(res, _.pick(req.user, [
+            'email', 'name', 'phone_number', 'permissions', 'role', 'username', '_id'
+        ]), 200, 'successfull')
     }
     async logout(req, res) {
         await tokenRepo.removeToken({
@@ -84,13 +89,30 @@ class UserController {
     async getUsers(req, res) {
         const users = await userRepo.find({
             page: 1,
-            query: {role:{$ne:"SUPER_ADMIN"}}
+            query: { role: { $ne: "SUPER_ADMIN" } }
         }).select('-password -__v')
         helpers.sendResponse(res, {
             data: users,
             page: 1
         }, 200, 'seccessfull')
     }
+    async searchUser(req, res) {
+        const username = req.body.username
+        const foundedUser = await userRepo.find({ query: { username: { $regex: username } } }).select('name username')
+        helpers.sendResponse(res, foundedUser, 200, 'seccessfull')
+    }
+    async addAdmins(req, res) {
+        const ownerId = req.user._id
+        const ids = req.body.ids
+
+        // const foundedRestaurant = restaurantRepo.findByQueryAndUpdate({
+        //     query: { restaurantOwner: ownerId },
+        //     updatedField: $push: { restaurantAdmins: ids }
+        // })
+
+
+        helpers.sendResponse(res, null, 200, 'seccessfull')
+}
 }
 
 export default new UserController()

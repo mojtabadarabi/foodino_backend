@@ -1,5 +1,6 @@
-import { check ,header, param} from "express-validator";
+import { check, header, param } from "express-validator";
 import helpers from '../helpers/helpers';
+const { MongoClient, ObjectID } = require('mongodb');
 
 export default {
     create: [
@@ -27,13 +28,27 @@ export default {
             }),
         check('password').exists().trim().notEmpty().withMessage('enter password').bail()
     ],
-    get:[
+    get: [
         header('authorization').exists().trim().notEmpty().withMessage('enter authorization token')
     ],
-    access:[
+    access: [
         param('id').notEmpty().withMessage('id is requires').bail().isMongoId().withMessage('id is not valid'),
         check('role').notEmpty().withMessage('enter user role').bail()
-        .not().equals('SUPER_ADMIN').withMessage('cant set to super admin').bail()
-        .isIn(['ADMIN','USER','RESTAURANT_ADMIN']).withMessage('enter valid role')
-    ]
+            .not().equals('SUPER_ADMIN').withMessage('cant set to super admin').bail()
+            .isIn(['ADMIN', 'USER', 'RESTAURANT_ADMIN']).withMessage('enter valid role')
+    ],
+    searchUser: [
+        check('username').exists().withMessage('enter username').bail()
+            .isLength({ min: 4 }).withMessage('atleast 4 char')
+    ],
+    addAdmins: [
+        check('ids').exists().withMessage('please enter ids ').bail()
+            .isArray().withMessage('enter ids as array').bail().notEmpty().withMessage('enter at least one id !'),
+        check('ids.*').custom(value => {
+            if (!ObjectID.isValid(value)) {
+                throw new Error('Invalid ObjectID');
+            }
+            return true;
+        }),
+    ],
 }

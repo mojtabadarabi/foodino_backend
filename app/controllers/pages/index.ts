@@ -1,6 +1,8 @@
 import restaurantRepo from '@root/repositories/restaurantRepo';
 import { default as foodRepo } from '../../../repositories/foodRepo';
 import helpers from '../../helpers/helpers';
+import mongoose from 'mongoose';
+const ObjectId = mongoose.Types.ObjectId;
 
 class PagesControllers {
     async mainPage(req: any, res: any) {
@@ -16,7 +18,14 @@ class PagesControllers {
         const restaurants = await restaurantRepo.find({})
 
         helpers.sendResponse(res, { foods, restaurants }, 200, 'successfully')
-
+        
+    }
+    async manageAdmins(req,res){
+        const restaurants = await restaurantRepo.find({query:{restaurantOwner:req.user._id}}).populate({
+            path:'restaurantOwner',
+            select:'name email username phone_number'
+        })
+        helpers.sendResponse(res, restaurants, 200, 'successfully')
     }
 }
 

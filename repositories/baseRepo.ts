@@ -45,6 +45,15 @@ class BaseRepo {
             $set: updatedField
         }, { new: true })
     }
+
+    findByQueryAndUpdate({
+        query,
+        updatedField
+    }){
+        return this.model.findOneAndUpdate(query, {
+            $set: updatedField
+        }, { new: true })
+    }
 } 
 export {}
 export default BaseRepo;

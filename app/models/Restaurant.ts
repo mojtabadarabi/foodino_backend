@@ -23,8 +23,16 @@ const schema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
     default: null,
-    required:true
+    required: true
   },
+  restaurantAdmins: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'user',
+      default: null,
+      required: true
+    }
+  ],
   comments: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Comments'

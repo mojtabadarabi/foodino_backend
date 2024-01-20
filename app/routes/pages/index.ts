@@ -13,6 +13,14 @@ router.get('/admin-page',
     ,
     pagesControllers.adminPage)
 
+router.get('/manage-admins',
+    [
+        authMiddleware.checkRefreshToken,
+        (req, res, next) => authMiddleware.checkUserPermissions(req, res, next, [foodManagement]),
+    ]
+    ,
+    pagesControllers.manageAdmins)
+
 export default router
 export { };
 
