@@ -46,13 +46,11 @@ class BaseRepo {
         }, { new: true })
     }
 
-    findByQueryAndUpdate({
+    updateMany({
         query,
-        updatedField
+        update
     }){
-        return this.model.findOneAndUpdate(query, {
-            $set: updatedField
-        }, { new: true })
+        return this.model.updateMany(query,update, { new: true })
     }
 } 
 export {}

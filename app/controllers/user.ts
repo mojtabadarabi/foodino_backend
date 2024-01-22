@@ -1,10 +1,10 @@
 import RoleRepo from '@root/repositories/RoleRepo';
-import restaurantRepo from '@root/repositories/restaurantRepo';
 import _ from 'lodash';
 import tokenRepo from '../../repositories/tokenRepo';
 import userRepo from '../../repositories/userRepo';
 import helpers from '../helpers/helpers';
 import UserModel from '../models/User';
+
 
 class UserController {
     async sign(req, res) {
@@ -101,18 +101,7 @@ class UserController {
         const foundedUser = await userRepo.find({ query: { username: { $regex: username } } }).select('name username')
         helpers.sendResponse(res, foundedUser, 200, 'seccessfull')
     }
-    async addAdmins(req, res) {
-        const ownerId = req.user._id
-        const ids = req.body.ids
 
-        // const foundedRestaurant = restaurantRepo.findByQueryAndUpdate({
-        //     query: { restaurantOwner: ownerId },
-        //     updatedField: $push: { restaurantAdmins: ids }
-        // })
-
-
-        helpers.sendResponse(res, null, 200, 'seccessfull')
-}
 }
 
 export default new UserController()

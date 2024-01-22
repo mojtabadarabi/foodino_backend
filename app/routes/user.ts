@@ -40,14 +40,6 @@ router.post('/search-users', [
     , UserController.searchUser.bind(UserController)
 )
 
-router.post('/add-admins', [
-    userValidation.addAdmins,
-    authMiddleware.checkRefreshToken,
-],
-    validationMiddleware
-    , UserController.addAdmins.bind(UserController)
-)
-
 export default router
 export { };
 

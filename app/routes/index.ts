@@ -6,11 +6,13 @@ import foodRoutes from './food/index';
 import userRoutes from './user';
 import pagesRoute from './pages';
 import actionRoute from './action';
+import adminsRoute from './admins';
 import helpers from '../helpers/helpers';
 
 router.use('/restaurant', restaurantRoutes)
 router.use('/food', foodRoutes)
 router.use('/user', userRoutes)
+router.use('/admins', adminsRoute)
 router.use('/pages', pagesRoute)
 
 router.use('/action', actionRoute)

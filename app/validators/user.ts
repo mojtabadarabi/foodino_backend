@@ -41,14 +41,4 @@ export default {
         check('username').exists().withMessage('enter username').bail()
             .isLength({ min: 4 }).withMessage('atleast 4 char')
     ],
-    addAdmins: [
-        check('ids').exists().withMessage('please enter ids ').bail()
-            .isArray().withMessage('enter ids as array').bail().notEmpty().withMessage('enter at least one id !'),
-        check('ids.*').custom(value => {
-            if (!ObjectID.isValid(value)) {
-                throw new Error('Invalid ObjectID');
-            }
-            return true;
-        }),
-    ],
 }

@@ -21,8 +21,12 @@ class PagesControllers {
         
     }
     async manageAdmins(req,res){
-        const restaurants = await restaurantRepo.find({query:{restaurantOwner:req.user._id}}).populate({
+        const restaurants = await restaurantRepo.findOne({query:{restaurantOwner:req.user._id}}).populate({
             path:'restaurantOwner',
+            select:'name email username phone_number'
+        }).
+        populate({
+            path:'restaurantAdmins',
             select:'name email username phone_number'
         })
         helpers.sendResponse(res, restaurants, 200, 'successfully')
