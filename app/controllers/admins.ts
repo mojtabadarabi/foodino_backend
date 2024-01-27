@@ -1,4 +1,5 @@
 import restaurantRepo from '@root/repositories/restaurantRepo';
+import userRepo from '@root/repositories/userRepo';
 import helpers from '../helpers/helpers';
 const { MongoClient, ObjectID } = require('mongodb');
 
@@ -21,6 +22,10 @@ class AdminsController {
             query: { restaurantOwner: ownerId },
             update: { $push: { restaurantAdmins: ids } }
         })
+        await userRepo.updateManyById({
+            ids,
+            update:{$set:{role:'RESTAURANT_ADMIN'}}
+        })
         helpers.sendResponse(res, null, 200, 'seccessfull')
     }
     async removeAdmins(req, res) {
@@ -40,9 +45,13 @@ class AdminsController {
             query: { restaurantOwner: ownerId },
             update: { $pull: { restaurantAdmins: { $in: ids } } }
         })
+        await userRepo.updateManyById({
+            ids,
+            update:{$set:{role:'USER'}}
+        })
         helpers.sendResponse(res, null, 200, 'seccessfull')
     }
-    
+
 }
 
 export default new AdminsController()

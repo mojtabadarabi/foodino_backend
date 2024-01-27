@@ -34,13 +34,13 @@ class BaseRepo {
         otherOptions = {}
     }: any) {
         console.log(query)
-        return this.model.findOne(query,fields,otherOptions)
+        return this.model.findOne(query, fields, otherOptions)
     }
 
     findByIdAndUpdate({
         id,
         updatedField
-    }){
+    }) {
         return this.model.findByIdAndUpdate(id, {
             $set: updatedField
         }, { new: true })
@@ -49,9 +49,17 @@ class BaseRepo {
     updateMany({
         query,
         update
-    }){
-        return this.model.updateMany(query,update, { new: true })
+    }) {
+        return this.model.updateMany(query, update, { new: true })
     }
-} 
-export {}
+
+
+    updateManyById({
+        ids,
+        update
+    }) {
+        return this.model.update({ _id: { $in: ids } }, update, { multi: true })
+    }
+}
+export { };
 export default BaseRepo;
