@@ -115,3 +115,51 @@
 {"level":"info","message":"db connected"}
 {"level":"info","message":"db connected"}
 {"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"code":"LIMIT_UNEXPECTED_FILE","field":"images[0]","level":"error","message":"Unexpected field Unexpected field","name":"MulterError","stack":"MulterError: Unexpected field\n    at wrappedFileFilter (E:\\food\\node_modules\\multer\\index.js:40:19)\n    at Multipart.<anonymous> (E:\\food\\node_modules\\multer\\lib\\make-middleware.js:107:7)\n    at Multipart.emit (node:events:514:28)\n    at Multipart.emit (node:domain:488:12)\n    at HeaderParser.cb (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:358:14)\n    at HeaderParser.push (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:162:20)\n    at SBMH.ssCb [as _cb] (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:394:37)\n    at feed (E:\\food\\node_modules\\streamsearch\\lib\\sbmh.js:248:10)\n    at SBMH.push (E:\\food\\node_modules\\streamsearch\\lib\\sbmh.js:104:16)\n    at Multipart._write (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:567:19)\n    at writeOrBuffer (node:internal/streams/writable:447:12)\n    at _write (node:internal/streams/writable:389:10)\n    at Multipart.Writable.write (node:internal/streams/writable:393:10)\n    at IncomingMessage.ondata (node:internal/streams/readable:817:22)\n    at IncomingMessage.emit (node:events:514:28)\n    at IncomingMessage.emit (node:domain:488:12)","storageErrors":[]}
+{"code":"LIMIT_UNEXPECTED_FILE","field":"images[0]","level":"error","message":"Unexpected field Unexpected field","name":"MulterError","stack":"MulterError: Unexpected field\n    at wrappedFileFilter (E:\\food\\node_modules\\multer\\index.js:40:19)\n    at Multipart.<anonymous> (E:\\food\\node_modules\\multer\\lib\\make-middleware.js:107:7)\n    at Multipart.emit (node:events:514:28)\n    at Multipart.emit (node:domain:488:12)\n    at HeaderParser.cb (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:358:14)\n    at HeaderParser.push (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:162:20)\n    at SBMH.ssCb [as _cb] (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:394:37)\n    at feed (E:\\food\\node_modules\\streamsearch\\lib\\sbmh.js:200:10)\n    at SBMH.push (E:\\food\\node_modules\\streamsearch\\lib\\sbmh.js:104:16)\n    at Multipart._write (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:567:19)\n    at writeOrBuffer (node:internal/streams/writable:447:12)\n    at _write (node:internal/streams/writable:389:10)\n    at Multipart.Writable.write (node:internal/streams/writable:393:10)\n    at IncomingMessage.ondata (node:internal/streams/readable:817:22)\n    at IncomingMessage.emit (node:events:514:28)\n    at IncomingMessage.emit (node:domain:488:12)","storageErrors":[]}
+{"code":"LIMIT_UNEXPECTED_FILE","field":"images[0]","level":"error","message":"Unexpected field Unexpected field","name":"MulterError","stack":"MulterError: Unexpected field\n    at wrappedFileFilter (E:\\food\\node_modules\\multer\\index.js:40:19)\n    at Multipart.<anonymous> (E:\\food\\node_modules\\multer\\lib\\make-middleware.js:107:7)\n    at Multipart.emit (node:events:514:28)\n    at Multipart.emit (node:domain:488:12)\n    at HeaderParser.cb (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:358:14)\n    at HeaderParser.push (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:162:20)\n    at SBMH.ssCb [as _cb] (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:394:37)\n    at feed (E:\\food\\node_modules\\streamsearch\\lib\\sbmh.js:248:10)\n    at SBMH.push (E:\\food\\node_modules\\streamsearch\\lib\\sbmh.js:104:16)\n    at Multipart._write (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:567:19)\n    at writeOrBuffer (node:internal/streams/writable:447:12)\n    at _write (node:internal/streams/writable:389:10)\n    at Multipart.Writable.write (node:internal/streams/writable:393:10)\n    at IncomingMessage.ondata (node:internal/streams/readable:817:22)\n    at IncomingMessage.emit (node:events:514:28)\n    at IncomingMessage.emit (node:domain:488:12)","storageErrors":[]}
+{"level":"info","message":"db connected"}
+{"code":"LIMIT_UNEXPECTED_FILE","field":"images[0]","level":"error","message":"Unexpected field Unexpected field","name":"MulterError","stack":"MulterError: Unexpected field\n    at wrappedFileFilter (E:\\food\\node_modules\\multer\\index.js:40:19)\n    at Multipart.<anonymous> (E:\\food\\node_modules\\multer\\lib\\make-middleware.js:107:7)\n    at Multipart.emit (node:events:514:28)\n    at Multipart.emit (node:domain:488:12)\n    at HeaderParser.cb (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:358:14)\n    at HeaderParser.push (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:162:20)\n    at SBMH.ssCb [as _cb] (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:394:37)\n    at feed (E:\\food\\node_modules\\streamsearch\\lib\\sbmh.js:219:14)\n    at SBMH.push (E:\\food\\node_modules\\streamsearch\\lib\\sbmh.js:104:16)\n    at Multipart._write (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:567:19)\n    at writeOrBuffer (node:internal/streams/writable:447:12)\n    at _write (node:internal/streams/writable:389:10)\n    at Multipart.Writable.write (node:internal/streams/writable:393:10)\n    at IncomingMessage.ondata (node:internal/streams/readable:817:22)\n    at IncomingMessage.emit (node:events:514:28)\n    at IncomingMessage.emit (node:domain:488:12)","storageErrors":[]}
+{"code":"LIMIT_UNEXPECTED_FILE","field":"images``","level":"error","message":"Unexpected field Unexpected field","name":"MulterError","stack":"MulterError: Unexpected field\n    at wrappedFileFilter (E:\\food\\node_modules\\multer\\index.js:40:19)\n    at Multipart.<anonymous> (E:\\food\\node_modules\\multer\\lib\\make-middleware.js:107:7)\n    at Multipart.emit (node:events:514:28)\n    at Multipart.emit (node:domain:488:12)\n    at HeaderParser.cb (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:358:14)\n    at HeaderParser.push (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:162:20)\n    at SBMH.ssCb [as _cb] (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:394:37)\n    at feed (E:\\food\\node_modules\\streamsearch\\lib\\sbmh.js:248:10)\n    at SBMH.push (E:\\food\\node_modules\\streamsearch\\lib\\sbmh.js:104:16)\n    at Multipart._write (E:\\food\\node_modules\\busboy\\lib\\types\\multipart.js:567:19)\n    at writeOrBuffer (node:internal/streams/writable:447:12)\n    at _write (node:internal/streams/writable:389:10)\n    at Multipart.Writable.write (node:internal/streams/writable:393:10)\n    at IncomingMessage.ondata (node:internal/streams/readable:817:22)\n    at IncomingMessage.emit (node:events:514:28)\n    at IncomingMessage.emit (node:domain:488:12)","storageErrors":[]}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"error","message":"this.model.findAndDelete is not a function"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}

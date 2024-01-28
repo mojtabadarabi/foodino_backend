@@ -23,6 +23,11 @@ class FoodRepo extends BaseRepo {
             query
         })
     }
+    async create(food) {
+        const requestedFood = new this.model(food)
+        return requestedFood.save()
+    }
+
 }
 
 export { }

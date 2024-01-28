@@ -60,6 +60,10 @@ class BaseRepo {
     }) {
         return this.model.update({ _id: { $in: ids } }, update, { multi: true })
     }
+
+    async findByIdAndDelete(_id){
+        return this.model.findOneAndDelete({_id})
+    }
 }
 export { };
 export default BaseRepo;

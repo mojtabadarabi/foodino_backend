@@ -6,6 +6,8 @@ const foodSchema = new mongoose.Schema({
     score: { type: Number, required: false, default: 0 },
     price: { type: Number, required: true },
     images: { type: Array, required: false, default: [] },
+    restaurantId:{type:mongoose.Schema.Types.ObjectId,ref:'restaurant',required:true},
+    creatorId:{type:mongoose.Schema.Types.ObjectId,ref:'user',required:true},
     comments: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Comments',

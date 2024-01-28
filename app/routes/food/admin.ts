@@ -8,7 +8,7 @@ const router = require('express').Router();
 const { foodManagement } = require('../../../config/permissions')
 
 router.get('/',
-    [authMiddleware.checkRefreshToken, authMiddleware.checkRestaurantAdmin],
+    [authMiddleware.checkRefreshToken, (req, res, next) => authMiddleware.checkUserPermissions(req, res, next, [foodManagement]),],
     foodController.getAll)
 
 router.post('/',
@@ -24,6 +24,7 @@ router.delete('/:id',
     foodController.delete
 )
 router.put('/:id',
+    uploadMulter.array('images'),
     [foodValidator.update, authMiddleware.checkRefreshToken, (req, res, next) => authMiddleware.checkUserPermissions(req, res, next, [foodManagement])],
     validationMiddleware,
     foodController.update
