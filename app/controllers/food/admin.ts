@@ -56,7 +56,6 @@ class FoodController {
     async update(req: any, res: any) {
         const foodId = req.params.id
         const images = extractMulterImages(req.files || [])
-        console.log(images)
         const food = {
             ...req.body,
             images,

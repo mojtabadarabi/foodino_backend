@@ -163,3 +163,29 @@
 {"level":"info","message":"db connected"}
 {"level":"info","message":"db connected"}
 {"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'query')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'query')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'query')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'query')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'query')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'query')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'query')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'query')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'query')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'query')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'query')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'query')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'query')"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
+{"level":"info","message":"db connected"}
