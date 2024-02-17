@@ -5,7 +5,7 @@ import authMiddleware from '../../middlewares/auth';
 const { foodManagement } = require('../../../config/permissions')
 
 router.get('/main-page', pagesControllers.mainPage)
-router.get('/restaurants', pagesControllers.restaurants)
+router.post('/restaurants', pagesControllers.restaurants)
 router.get('/admin-page',
     [
         authMiddleware.checkRefreshToken,

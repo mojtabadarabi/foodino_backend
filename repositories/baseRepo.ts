@@ -28,6 +28,25 @@ class BaseRepo {
             .limit(paginate).sort(sort)
     }
 
+    async findWithPaginate({
+        query = {},
+        fields = {},
+        sort = { _id: '1' },
+        page = 1,
+        paginate = 20,
+        otherOptions = {}
+    }: GetAllProps) {
+        const data = await this.model.find(query, fields, otherOptions).skip((page - 1) * paginate)
+            .limit(paginate).sort(sort)
+        return {
+            data,
+            total: await this.model.countDocuments(query),
+            totalPage: Math.ceil((await this.model.countDocuments(query)) / paginate),
+            currentPage: page,
+            currentPaginate: paginate
+        }
+    }
+
     findOne({
         query = {},
         fields = {},
@@ -61,8 +80,8 @@ class BaseRepo {
         return this.model.update({ _id: { $in: ids } }, update, { multi: true })
     }
 
-    async findByIdAndDelete(_id){
-        return this.model.findOneAndDelete({_id})
+    async findByIdAndDelete(_id) {
+        return this.model.findOneAndDelete({ _id })
     }
 }
 export { };

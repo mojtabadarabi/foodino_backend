@@ -16,8 +16,10 @@ class PagesControllers {
         helpers.sendResponse(res, { foods, restaurants, someComments: comments }, 200, 'successfully')
     }
     async restaurants(req: any, res: any) {
+        const page = req.query.page
+        const paginate = req.body.paginate
         //@ts-ignore
-        const restaurants = await restaurantRepo.find({ query: { isApproval: true } })
+        const restaurants = await restaurantRepo.findWithPaginate({ query: { isApproval: true } ,page,paginate})
         helpers.sendResponse(res, { restaurants }, 200, 'successfully')
     }
     async adminPage(req: any, res: any) {
