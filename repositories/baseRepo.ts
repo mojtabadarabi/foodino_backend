@@ -36,6 +36,7 @@ class BaseRepo {
         paginate = 20,
         otherOptions = {}
     }: GetAllProps) {
+        console.log(query)
         const data = await this.model.find(query, fields, otherOptions).skip((page - 1) * paginate)
             .limit(paginate).sort(sort)
         return {

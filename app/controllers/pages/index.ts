@@ -1,5 +1,6 @@
 import commentRepo from '@root/repositories/commentRepo';
 import restaurantRepo from '@root/repositories/restaurantRepo';
+import _ from 'lodash';
 import mongoose from 'mongoose';
 import { default as foodRepo } from '../../../repositories/foodRepo';
 import helpers from '../../helpers/helpers';
@@ -19,8 +20,26 @@ class PagesControllers {
         const page = req.query.page
         const paginate = req.body.paginate
         //@ts-ignore
-        const restaurants = await restaurantRepo.findWithPaginate({ query: { isApproval: true } ,page,paginate})
+        const restaurants = await restaurantRepo.findWithPaginate({ query: { isApproval: true }, page, paginate })
         helpers.sendResponse(res, { restaurants }, 200, 'successfully')
+    }
+    async restaurant(req: any, res: any) {
+        const page = req.query.page
+        const paginate = req.body.paginate
+        const restaurantId = req.params.id
+        const restaurant = await restaurantRepo.findOne({ query: { _id: restaurantId, isApproval: true } })
+        if (!restaurant) return helpers.sendResponse(res, null, 404, 'not found')
+        const restaurantFoods = await foodRepo.findWithPaginate({ query: { restaurantId }, page, paginate })
+        helpers.sendResponse(res, {
+            restaurant: _.pick(restaurant, [
+                '_id',
+                'name',
+                'description',
+                'address',
+                'adminUserName',
+            ]),
+            foods: restaurantFoods
+        }, 200, 'successfully')
     }
     async adminPage(req: any, res: any) {
         const foods = await foodRepo.getAllFoods()

@@ -6,6 +6,7 @@ const { foodManagement } = require('../../../config/permissions')
 
 router.get('/main-page', pagesControllers.mainPage)
 router.post('/restaurants', pagesControllers.restaurants)
+router.post('/restaurants/:id', pagesControllers.restaurant)
 router.get('/admin-page',
     [
         authMiddleware.checkRefreshToken,
